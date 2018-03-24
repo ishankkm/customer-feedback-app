@@ -1,0 +1,28 @@
+{
+    "appName" : "smsApp",
+    
+    "msgConfig" : {
+        "account_sid" : "AC260ee5e0365730f2114c6175a0fe3daf",
+        "auth_token" : "7eb3c895a553e8a030ad2531d92133df",
+        "appNumber" : "+13236010146"
+    },
+    
+    "textAnalyticsConfig" : {
+        "subscription_key" : "c3cbeed4a1374fdb8a9f77e0eca782bc",
+        "text_analytics_base_url" : "https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.0/",
+        "language_api_url": "https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.0/languages",
+        "sentiment_api_url": "https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.0/sentiment" 
+    },
+    
+    "mongoConfig" : {
+    	"mongoClient" : "mongodb+srv://ishankkm:lhdzDN29cojaXwkz@ishankmdb1-yi3zu.mongodb.net/test"
+    },
+    
+    "msgTemplates" : { 
+        "firstAutomatedMsg" : "Hi <fn>, I saw that your <pt> was delivered. How are you enjoying it so far?",
+        "positiveRes" : "Great, can you describe what you love most about <pt>",
+        "negativeRes" : "I'm sorry to hear that, what do you dislike about <pt>",
+        "endConvReply": "Thank you for your valuable feedback. Please visit our website for exciting offers.",
+        "default": "Thank you for contacting us, please visit our website for exciting offers."
+    }
+}

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="/static/js/scripts.js"></script>
+    <title>SMS App</title>
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-expand-lg navbar-dark bg-primary navbar-toggleable-sm">
+      <a class="navbar-brand" href="#"><img src="/static/css/log.png" alt="icon" class="icon-l"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" style="color:#fff;">
+              Jackson T.
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Separated link</a>
+            </div>
+          </li>
+          <li><a class="nav-link" href="#"><img src="/static/css/usr.png" alt="icon" class="icon-l"></a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container-fluid height-90">
+      <div class="row height-100">
+        <nav class="col-md-3 col-lg-3 d-none d-md-block bg-light sidebar">
+          <div class="sidebar-sticky">
+            <form class="mt-4 ml-4 mr-4" id="sendForm">
+              <div class="form-group mt-5">
+                <div>
+                  <label for="phoneNumber" class="fw-600"><img src="/static/css/cal.svg" alt="icon" class="icon-xs"> Enter Customer Phone Number</label>
+                </div>
+                <input type="text" pattern='^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$' class="form-control" id="phoneNumber" placeholder="" required>
+              </div>
+              <div class="form-group mt-4">
+                <div>
+                  <label for="productType" class="fw-600"><img src="/static/css/grp.png" alt="icon" class="icon-xs"> Product Type</label>
+                </div>
+                <div class="btn-group btn-group-toggle d-flex" role="group" data-toggle="buttons" id="productType">
+                  <label class="btn btn-default w-100 bg-light btn-b">
+                    <input type="radio" name="options" id="option1" autocomplete="off" required value="Lime"> Lime
+                  </label>
+                  <label class="btn btn-default w-100 bg-light btn-b">
+                    <input type="radio" name="options" id="option2" autocomplete="off" required value="Cherry"> Cherry
+                  </label>
+                  <label class="btn btn-default w-100 bg-light btn-b">
+                    <input type="radio" name="options" id="option3" autocomplete="off" required value="Vanilla"> Vanilla
+                  </label>
+                </div>
+              </div>
+              <div class="form-group mt-4">
+                <div>
+                  <label for="custName" class="fw-600"><img src="/static/css/nam.svg" alt="icon" class="icon-xs"> Customer Name</label>
+                </div>
+                <input type="text" class="form-control" id="custName" placeholder="" required>
+              </div>
+              <div class="form-group d-flex justify-content-center mt-4">
+                <input type="submit" class="btn btn-warning btn-rounded btn-text" value="Send SMS"></input>
+              </div>
+            </form>
+          </div>
+        </nav>
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-9 pt-3 px-2 bg-shaded">
+          <div class="card mr-4 ml-1 mt-5 height-80">
+            <ul class="list-group px-4">
+              <li class="list-group-item border-0 pt-5 pb-0">
+                <div class="pb-0">
+                  <p class="box-text-lab fw-600">First Automated Message</p>
+                </div>
+              </li>
+              <li class="list-group-item pt-3 pb-1 z-depth-4 msg-box">
+                <div class="input-group ml-1 mb-3 row">
+                  <input type="text" class="form-control-plaintext col-10 box-text" id="msg_txt_1" value="">
+                  <div class="col-2">
+                    <button class="btn btn-warning btn-rounded ml-2 btn-text" type="button" id="msg_but_1" onclick="toggleEditable(1)">Edit</button>
+                  </div>
+                </div>
+              </li>
+              <li class="list-group-item border-0 mt-3 pb-0">
+                <div class="pb-0">
+                  <p class="box-text-lab fw-600">if Positive Response <img src="/static/css/sml.png" alt="icon" class="icon-s"> </p>
+                </div>
+              </li>
+              <li class="list-group-item pt-3 pb-1 msg-box">
+                <div class="input-group ml-1 mb-3 row">
+                  <input type="text" class="form-control-plaintext col-10 box-text" id="msg_txt_2" placeholder="">
+                  <div class="col-2">
+                    <button class="btn btn-warning btn-rounded ml-2 btn-text" id="msg_but_2" type="button" onclick="toggleEditable(2)">Edit</button>
+                  </div>
+                </div>
+              </li>
+              <li class="list-group-item border-0 mt-3 pb-0">
+                <div class="pb-0">
+                  <p class="box-text-lab fw-600">if Negative Response <img src="/static/css/sad.png" alt="icon" class="icon-s"></p>
+                </div>
+              </li>
+              <li class="list-group-item pt-3 pb-1 msg-box">
+                <div class="input-group ml-1 mb-3 row">
+                  <input type="text" class="form-control-plaintext col-10 box-text" id="msg_txt_3" placeholder="">
+                  <div class="col-2">
+                    <button class="btn btn-warning btn-rounded ml-2 btn-text" id="msg_but_3" type="button" onclick="toggleEditable(3)">Edit</button>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </main>
+      </div>
+    </div><!-- content container -->
+
+    <script src="/static/js/tether.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
